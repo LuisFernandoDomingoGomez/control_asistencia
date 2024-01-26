@@ -1,48 +1,82 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
+    <title>@yield('title') | {{ config('app.name') }}</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 4.1.1 -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+    <!-- Ionicons -->
+    <link href="//fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link href="{{ asset('assets/css/@fortawesome/fontawesome-free/css/all.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/iziToast.min.css') }}">
+    <link href="{{ asset('assets/css/sweetalert.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/css/select2.min.css') }}" rel="stylesheet" type="text/css"/>
 
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+@yield('page_css')
+<!-- Template CSS -->
+    <link rel="stylesheet" href="{{ asset('web/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('web/css/components.css')}}">
+    @yield('page_css')
 
-        <title>{{ config('app.name', 'Consultoria') }}</title>
-        <!-- Favicon -->
-        <link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-        <!-- Extra details for Live View on GitHub Pages -->
 
-        <!-- Icons -->
-        <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-        <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-        <!-- Argon CSS -->
-        <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
-    </head>
-    <body class="{{ $class ?? '' }}">
-        @auth()
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-            @include('layouts.navbars.sidebar')
-        @endauth
-        
+    @yield('css')
+</head>
+<body>
+
+<div id="app">
+    <div class="main-wrapper main-wrapper-1">
+        <div class="navbar-bg"></div>
+        <nav class="navbar navbar-expand-lg main-navbar">
+            @include('layouts.header')
+
+        </nav>
+        <div class="main-sidebar main-sidebar-postion">
+            @include('layouts.sidebar')
+        </div>
+        <!-- Main Content -->
         <div class="main-content">
-            @include('layouts.navbars.navbar')
             @yield('content')
         </div>
+        <footer class="main-footer">
+            @include('layouts.footer')
+        </footer>
+    </div>
+</div>
 
-        @guest()
-            @include('layouts.footers.guest')
-        @endguest
+@include('profile.change_password')
+@include('profile.edit_profile')
 
-        <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        
-        @stack('js')
-        
-        <!-- Argon JS -->
-        <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
-    </body>
+</body>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('assets/js/iziToast.min.js') }}"></script>
+<script src="{{ asset('assets/js/select2.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
+
+<!-- Template JS File -->
+<script src="{{ asset('web/js/stisla.js') }}"></script>
+<script src="{{ asset('web/js/scripts.js') }}"></script>
+<script src="{{ mix('assets/js/profile.js') }}"></script>
+<script src="{{ mix('assets/js/custom/custom.js') }}"></script>
+@yield('page_js')
+@yield('scripts')
+<script>
+    let loggedInUser =@json(\Illuminate\Support\Facades\Auth::user());
+    let loginUrl = '{{ route('login') }}';
+    // Loading button plugin (removed from BS4)
+    (function ($) {
+        $.fn.button = function (action) {
+            if (action === 'loading' && this.data('loading-text')) {
+                this.data('original-text', this.html()).html(this.data('loading-text')).prop('disabled', true);
+            }
+            if (action === 'reset' && this.data('original-text')) {
+                this.html(this.data('original-text')).prop('disabled', false);
+            }
+        };
+    }(jQuery));
+</script>
 </html>

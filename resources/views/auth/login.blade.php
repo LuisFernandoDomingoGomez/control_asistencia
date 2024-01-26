@@ -1,66 +1,68 @@
-@extends('layouts.app', ['class' => 'bg-default'])
-
+@extends('layouts.auth_app')
+@section('title')
+    Admin Login
+@endsection
 @section('content')
-    @include('layouts.headers.guest')
+    <div class="card card-primary">
+        <div class="card-header"><h4>Admin Login</h4></div>
 
-    <div class="container mt--8 pb-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-7">
-                <div class="card bg-secondary shadow border-0">
-                        <br>
-                        <div class="text-muted text-center mt-2 mb-3"><h2><b>{{ __('Inicio de sesión') }}</b><h2></div>
-                    <div class="card-body px-lg-5 py-lg-5">
-                        <form role="form" method="POST" action="{{ route('login') }}">
-                            @csrf
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }} mb-3">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" type="email" name="email" value="{{ old('email') }}" value="admin@argon.com" required autofocus>
-                                </div>
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                                    </div>
-                                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Contraseña') }}" type="password" required>
-                                </div>
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="custom-control custom-control-alternative custom-checkbox">
-                                <input class="custom-control-input" name="remember" id="customCheckLogin" type="checkbox" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="custom-control-label" for="customCheckLogin">
-                                    <span class="text-muted">{{ __('Remember me') }}</span>
-                                </label>
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary my-4">{{ __('Iniciar sesión') }}</button>
-                            </div>
-                        </form>
+        <div class="card-body">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                @if ($errors->any())
+                    <div class="alert alert-danger p-0">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input aria-describedby="emailHelpBlock" id="email" type="email"
+                           class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                           placeholder="Enter Email" tabindex="1"
+                           value="{{ (Cookie::get('email') !== null) ? Cookie::get('email') : old('email') }}" autofocus
+                           required>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('email') }}
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-6">
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="text-light">
-                                <small>{{ __('¿Olvidaste tu contraseña?') }}</small>
+
+                <div class="form-group">
+                    <div class="d-block">
+                        <label for="password" class="control-label">Password</label>
+                        <div class="float-right">
+                            <a href="{{ route('password.request') }}" class="text-small">
+                                Forgot Password?
                             </a>
-                        @endif
+                        </div>
+                    </div>
+                    <input aria-describedby="passwordHelpBlock" id="password" type="password"
+                           value="{{ (Cookie::get('password') !== null) ? Cookie::get('password') : null }}"
+                           placeholder="Enter Password"
+                           class="form-control{{ $errors->has('password') ? ' is-invalid': '' }}" name="password"
+                           tabindex="2" required>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('password') }}
                     </div>
                 </div>
-            </div>
+
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" name="remember" class="custom-control-input" tabindex="3"
+                               id="remember"{{ (Cookie::get('remember') !== null) ? 'checked' : '' }}>
+                        <label class="custom-control-label" for="remember">Remember Me</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
+                        Login
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 @endsection
