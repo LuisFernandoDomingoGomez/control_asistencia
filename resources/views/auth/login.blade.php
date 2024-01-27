@@ -3,8 +3,10 @@
     Login
 @endsection
 @section('content')
-    <div class="card card-primary">
-        <div class="card-header"><h4>Inicio de sesión</h4></div>
+    <div class="card card-success">
+        <div class="card-header" style="color: black;">
+            <h6>Inicio de sesión</h6>
+        </div>
 
         <div class="card-body">
             <form method="POST" action="{{ route('login') }}">
@@ -19,10 +21,10 @@
                     </div>
                 @endif
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email">Correo</label>
                     <input aria-describedby="emailHelpBlock" id="email" type="email"
                            class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
-                           placeholder="Enter Email" tabindex="1"
+                           placeholder="Ingresa tu correo" tabindex="1"
                            value="{{ (Cookie::get('email') !== null) ? Cookie::get('email') : old('email') }}" autofocus
                            required>
                     <div class="invalid-feedback">
@@ -32,16 +34,16 @@
 
                 <div class="form-group">
                     <div class="d-block">
-                        <label for="password" class="control-label">Password</label>
+                        <label for="password" class="control-label">Contraseña</label>
                         <div class="float-right">
                             <a href="{{ route('password.request') }}" class="text-small">
-                                Forgot Password?
+                                ¿Olvidaste tu contraseña?
                             </a>
                         </div>
                     </div>
                     <input aria-describedby="passwordHelpBlock" id="password" type="password"
                            value="{{ (Cookie::get('password') !== null) ? Cookie::get('password') : null }}"
-                           placeholder="Enter Password"
+                           placeholder="Ingresa tu contraseña"
                            class="form-control{{ $errors->has('password') ? ' is-invalid': '' }}" name="password"
                            tabindex="2" required>
                     <div class="invalid-feedback">
@@ -58,8 +60,8 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
-                        Login
+                    <button type="submit" class="btn btn-success btn-lg btn-block" tabindex="4">
+                        Entrar
                     </button>
                 </div>
             </form>
