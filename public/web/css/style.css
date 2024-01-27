@@ -263,7 +263,7 @@ select.form-control:not([size]):not([multiple]) {
 .form-group .control-label,
 .form-group > label {
     font-weight: 600;
-    color: #34395e;
+    color: #167a5e;
     font-size: 12px;
     letter-spacing: .5px;
 }
@@ -1048,7 +1048,7 @@ select.form-control:not([size]):not([multiple]) {
 .card.card-statistic-1 .card-body, .card.card-statistic-2 .card-body {
     font-size: 26px;
     font-weight: 700;
-    color: #34395e;
+    color: #167a5e;
     padding-bottom: 0;
 }
 
@@ -1302,7 +1302,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .table-links {
-    color: #34395e;
+    color: #167a5e;
     font-size: 12px;
     margin-top: 5px;
     opacity: 0;
@@ -1828,15 +1828,15 @@ h6 .badge {
 }
 
 .btn-primary:focus, .btn-primary.disabled:focus {
-    background-color: #394eea !important;
+    background-color: #27a263 !important;
 }
 
 .btn-primary:focus:active, .btn-primary.disabled:focus:active {
-    background-color: #394eea !important;
+    background-color: #27a263 !important;
 }
 
 .btn-primary:active, .btn-primary:hover, .btn-primary.disabled:active, .btn-primary.disabled:hover {
-    background-color: #394eea !important;
+    background-color: #27a263 !important;
 }
 
 .btn-outline-primary, .btn-outline-primary.disabled {
@@ -1930,7 +1930,7 @@ h6 .badge {
     margin-bottom: 5px;
     font-weight: 600;
     font-size: 15px;
-    color: #34395e;
+    color: #167a5e;
 }
 
 .media .media-title a {
@@ -1940,7 +1940,7 @@ h6 .badge {
 
 .media .media-description {
     line-height: 24px;
-    color: #34395e;
+    color: #167a5e;
 }
 
 .media .media-links {
@@ -1960,7 +1960,7 @@ h6 .badge {
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 5px;
-    color: #34395e;
+    color: #167a5e;
 }
 
 .media .media-cta {
@@ -1986,7 +1986,7 @@ h6 .badge {
 .media .media-items .media-item .media-label {
     font-weight: 600;
     font-size: 12px;
-    color: #34395e;
+    color: #167a5e;
     letter-spacing: .5px;
 }
 
@@ -2227,7 +2227,7 @@ h6 .badge {
     display: block;
     padding: 13px 18px;
     text-decoration: none;
-    color: #34395e;
+    color: #167a5e;
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -2539,7 +2539,7 @@ a.dropdown-item:focus, a.dropdown-item:active, a.dropdown-item.active {
 .dropdown-list .dropdown-item .dropdown-item-desc {
     line-height: 24px;
     white-space: normal;
-    color: #34395e;
+    color: #167a5e;
     margin-left: 60px;
 }
 
@@ -2720,7 +2720,7 @@ ul.nav-tabs li.nav-item a.nav-link.active i {
 :root {
     /* Colors */
     --primary: #0e4912;
-    --secondary: #34395e;
+    --secondary: #167a5e;
     --success: #47c363;
     --info: #3abaf4;
     --warning: #ffa426;
@@ -2765,7 +2765,7 @@ a.bb {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
-    color: #34395e;
+    color: #167a5e;
 }
 
 .text-time {
@@ -2843,7 +2843,7 @@ a.bb {
 
 .text-title {
     font-size: 14px;
-    color: #34395e;
+    color: #167a5e;
     font-weight: 600;
 }
 
@@ -3255,7 +3255,7 @@ pre {
     display: inline-block;
     font-size: 24px;
     margin-top: 3px;
-    color: #34395e;
+    color: #167a5e;
 }
 
 .section .section-header .section-header-back {
@@ -3372,7 +3372,7 @@ pre {
 .page-error .page-description {
     font-size: 18px;
     font-weight: 400;
-    color: #34395e;
+    color: #167a5e;
 }
 
 .page-error .page-search {

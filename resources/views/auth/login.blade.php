@@ -23,10 +23,10 @@
                 <div class="form-group">
                     <label for="email">Correo</label>
                     <input aria-describedby="emailHelpBlock" id="email" type="email"
-                           class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
-                           placeholder="Ingresa tu correo" tabindex="1"
-                           value="{{ (Cookie::get('email') !== null) ? Cookie::get('email') : old('email') }}" autofocus
-                           required>
+                        class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                        placeholder="Ingresa tu correo" tabindex="1"
+                        value="{{ (Cookie::get('email') !== null) ? Cookie::get('email') : old('email') }}" autofocus
+                        required>
                     <div class="invalid-feedback">
                         {{ $errors->first('email') }}
                     </div>
@@ -42,10 +42,10 @@
                         </div>
                     </div>
                     <input aria-describedby="passwordHelpBlock" id="password" type="password"
-                           value="{{ (Cookie::get('password') !== null) ? Cookie::get('password') : null }}"
-                           placeholder="Ingresa tu contraseña"
-                           class="form-control{{ $errors->has('password') ? ' is-invalid': '' }}" name="password"
-                           tabindex="2" required>
+                        value="{{ (Cookie::get('password') !== null) ? Cookie::get('password') : null }}"
+                        placeholder="Ingresa tu contraseña"
+                        class="form-control{{ $errors->has('password') ? ' is-invalid': '' }}" name="password"
+                        tabindex="2" required>
                     <div class="invalid-feedback">
                         {{ $errors->first('password') }}
                     </div>
@@ -54,13 +54,13 @@
                 <div class="form-group">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" name="remember" class="custom-control-input" tabindex="3"
-                               id="remember"{{ (Cookie::get('remember') !== null) ? 'checked' : '' }}>
+                            id="remember"{{ (Cookie::get('remember') !== null) ? 'checked' : '' }}>
                         <label class="custom-control-label" for="remember">Remember Me</label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-lg btn-block" tabindex="4">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                         Entrar
                     </button>
                 </div>

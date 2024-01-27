@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Editar Rol</h3>
+            <h5 class="page__heading">Editar Rol</h5>
         </div>
         <div class="section-body">
             <div class="row">
@@ -36,15 +36,16 @@
                                 <label for="">Permisos para este Rol:</label>
                                 <br/>
                                 @foreach($permission as $value)
-                                    <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
-                                    {{ $value->name }}</label>
-                                <br/>
+                                <div class="w-1/2 px-2">
+                                    <label class="flex items-center">
+                                        {{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, array('class' => 'name')) }}
+                                        <span class="ml-2">{{ $value->name }}</span>
+                                    </label>
+                                </div>
                                 @endforeach
                             </div>
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary">Guardar</button>
-                        
+                        <button type="submit" class="btn btn-success">Guardar</button>
                     </div>
                     {!! Form::close() !!}
 

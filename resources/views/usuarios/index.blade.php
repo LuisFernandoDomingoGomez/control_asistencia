@@ -10,20 +10,22 @@
               <div class="col-lg-12">
                   <div class="card">
                       <div class="card-body">                           
-                          <a class="btn btn-warning" href="{{ route('usuarios.create') }}">Nuevo</a>        
-                         
+                        <div class="d-flex justify-content-end">
+                          <a class="btn btn-primary" href="{{ route('usuarios.create') }}">Nuevo</a>
+                        </div>
                             <table class="table table-striped mt-2">
-                              <thead style="background-color:#6777ef">                                     
-                                  <th style="display: none;">ID</th>
-                                  <th style="color:#fff;">Nombre</th>
-                                  <th style="color:#fff;">E-mail</th>
-                                  <th style="color:#fff;">Rol</th>
-                                  <th style="color:#fff;">Acciones</th>                                                                   
+                              <thead>                                     
+                                  <th>No.</th>
+                                  <th>Nombre</th>
+                                  <th>Correo</th>
+                                  <th>Rol</th>
+                                  <th>Acciones</th>                                                                   
                               </thead>
                               <tbody>
+                                @php $i = 1; @endphp
                                 @foreach ($usuarios as $usuario)
                                   <tr>
-                                    <td style="display: none;">{{ $usuario->id }}</td>
+                                    <td>{{ $i++ }}</td>
                                     <td>{{ $usuario->name }}</td>
                                     <td>{{ $usuario->email }}</td>
                                     <td>
@@ -35,8 +37,7 @@
                                     </td>
 
                                     <td>                                  
-                                      <a class="btn btn-info" href="{{ route('usuarios.edit',$usuario->id) }}">Editar</a>
-
+                                      <a class="btn btn-success" href="{{ route('usuarios.edit',$usuario->id) }}">Editar</a>
                                       {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $usuario->id],'style'=>'display:inline']) !!}
                                           {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
                                       {!! Form::close() !!}

@@ -10,20 +10,22 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-        
                         @can('crear-rol')
-                        <a class="btn btn-warning" href="{{ route('roles.create') }}">Nuevo</a>                        
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-primary" href="{{ route('roles.create') }}">Nuevo</a>
+                        </div>
                         @endcan
-        
-                
                             <table class="table table-striped mt-2">
-                                <thead style="background-color:#6777ef">                                                       
-                                    <th style="color:#fff;">Rol</th>
-                                    <th style="color:#fff;">Acciones</th>
+                                <thead>    
+                                    <th>No.</th>                                                   
+                                    <th>Rol</th>
+                                    <th>Acciones</th>
                                 </thead>  
                                 <tbody>
+                                @php $i = 1; @endphp
                                 @foreach ($roles as $role)
-                                <tr>                           
+                                <tr>
+                                    <td>{{ $i++ }}</td>              
                                     <td>{{ $role->name }}</td>
                                     <td>                                
                                         @can('editar-rol')
