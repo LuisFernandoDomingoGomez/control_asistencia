@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Blog;
+use App\Models\Informe;
 
-class BlogController extends Controller
+class InformeController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:ver-blog|crear-blog|editar-blog|borrar-blog')->only('index');
-         $this->middleware('permission:crear-blog', ['only' => ['create','store']]);
-         $this->middleware('permission:editar-blog', ['only' => ['edit','update']]);
-         $this->middleware('permission:borrar-blog', ['only' => ['destroy']]);
+         $this->middleware('permission:ver-informe|crear-informe|editar-informe|borrar-informe')->only('index');
+         $this->middleware('permission:crear-informe', ['only' => ['create','store']]);
+         $this->middleware('permission:editar-informe', ['only' => ['edit','update']]);
+         $this->middleware('permission:borrar-informe', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.
@@ -23,9 +23,9 @@ class BlogController extends Controller
     public function index()
     {       
          //Con paginación
-         $blogs = Blog::paginate(5);
-         return view('blogs.index',compact('blogs'));
-         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $blogs->links() !!}    
+         $informes = Informe::paginate(5);
+         return view('informes.index',compact('informes'));
+         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $informes->links() !!}    
     }
 
     /**
@@ -35,7 +35,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('blogs.crear');
+        return view('informes.crear');
     }
 
     /**
@@ -47,13 +47,13 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'titulo' => 'required',
-            'contenido' => 'required',
+            'name' => 'required',
+            'archivo' => 'required',
         ]);
     
-        Blog::create($request->all());
+        Informe::create($request->all());
     
-        return redirect()->route('blogs.index');
+        return redirect()->route('informes.index');
     }
 
     /**
@@ -73,9 +73,9 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Blog $blog)
+    public function edit(Informe $informe)
     {
-        return view('blogs.editar',compact('blog'));
+        return view('informes.editar',compact('informe'));
     }
 
     /**
@@ -85,16 +85,16 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Blog $blog)
+    public function update(Request $request, Informe $informe)
     {
-         request()->validate([
-            'titulo' => 'required',
-            'contenido' => 'required',
+        request()->validate([
+            'name' => 'required',
+            'archivo' => 'required',
         ]);
     
-        $blog->update($request->all());
+        $informe->update($request->all());
     
-        return redirect()->route('blogs.index');
+        return redirect()->route('informes.index');
     }
 
     /**
@@ -103,10 +103,10 @@ class BlogController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Blog $blog)
+    public function destroy(Informe $informe)
     {
-        $blog->delete();
+        $informe->delete();
     
-        return redirect()->route('blogs.index');
+        return redirect()->route('informes.index');
     }
 }

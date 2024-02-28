@@ -23,11 +23,11 @@ class SeederTablaPermisos extends Seeder
             'editar-rol',
             'borrar-rol',
 
-            //Operacions sobre tabla blogs
-            'ver-blog',
-            'crear-blog',
-            'editar-blog',
-            'borrar-blog'
+            //Operacions sobre tabla informes
+            'ver-informe',
+            'crear-informe',
+            'editar-informe',
+            'borrar-informe'
         ];
 
         foreach($permisos as $permiso) {
