@@ -17,20 +17,23 @@
                         <br>
                         @endcan
                         <table class="table table-striped table-hover">
-                            <thead class="thead">                                
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Archivo</th>                             
-                                    <th>Acciones</th>                                                                   
-                              </thead>
-                              <tbody>
+                            <thead class="thead">
+                                <th>No</th>
+                                <th>Nombre</th>
+                                <th>Archivo</th>
+                                <th>Acciones</th>
+                            </thead>
+                            <tbody>
+                            @php
+                                $i = 1;
+                            @endphp
                             @foreach ($informes as $informe)
                             <tr>
-                                <td style="display: none;">{{ $informe->id }}</td>                                
+                                <td>{{ $i++ }}</td>
                                 <td>{{ $informe->name }}</td>
                                 <td>{{ $informe->archivo }}</td>
                                 <td>
-                                    <form action="{{ route('informes.destroy',$informe->id) }}" method="POST">                                        
+                                    <form action="{{ route('informes.destroy',$informe->id) }}" method="POST">
                                         @can('editar-informe')
                                         <a class="btn btn-info" href="{{ route('informes.edit',$informe->id) }}">Editar</a>
                                         @endcan

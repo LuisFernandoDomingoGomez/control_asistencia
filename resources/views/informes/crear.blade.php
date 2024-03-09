@@ -25,6 +25,12 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                        <label for="name">Nombre</label>
+                                        <input type="text" name="name" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12">
                                         <label for="fileInput" class="file-label">
                                             <div id="dropArea" class="drop-area">
                                                 <i class="fas fa-cloud-upload-alt"></i>

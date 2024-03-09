@@ -45,10 +45,10 @@
                                             <div class="card-block">
                                                 <h5>Reportes</h5>                                               
                                                 @php
-                                                use App\Models\Blog;
-                                                $cant_blogs = Blog::count();                                                
+                                                use App\Models\Informe;
+                                                $cant_informes = Informe::count();                                                
                                                 @endphp
-                                                <h2 class="text-right"><i class="fa fa-blog f-left"></i><span>{{$cant_blogs}}</span></h2>
+                                                <h2 class="text-right"><i class="fa fa-blog f-left"></i><span>{{$cant_informes}}</span></h2>
                                                 <p class="m-b-0 text-right"><a href="/blogs" class="text-white">Ver más</a></p>
                                             </div>
                                         </div>
@@ -58,7 +58,7 @@
                                         <div class="card bg-c-blue order-card">
                                             <div class="card-block">
                                                 <h5>Profesores</h5>
-                                                <h2 class="text-right"><i class="fa fa-blog f-left"></i><span>{{$cant_blogs}}</span></h2>
+                                                <h2 class="text-right"><i class="fa fa-blog f-left"></i><span>{{$cant_informes}}</span></h2>
                                                 <p class="m-b-0 text-right"><a href="/blogs" class="text-white">Ver más</a></p>
                                             </div>
                                         </div>
