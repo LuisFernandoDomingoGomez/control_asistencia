@@ -16,10 +16,10 @@
                         <div class="card-body">
 
                         @can('crear-asistencia')
-                        <div class="d-flex justify-content-end">
-                            <a class="btn btn-primary" href="{{ route('asistencias.create') }}">Nuevo</a>
-                        </div>
-                        <br>
+                            <div class="d-flex justify-content-end">
+                                <a class="btn btn-primary" href="{{ route('asistencias.import') }}">Nuevo</a>
+                            </div>
+                            <br>
                         @endcan
 
                         @if ($message = Session::get('success'))
@@ -105,7 +105,6 @@
                         </table>
                         </div>
 
-                        <!-- Ubicamos la paginacion a la derecha -->
                         <div class="pagination justify-content-end">
                             {!! $asistencias->links() !!}
                         </div>

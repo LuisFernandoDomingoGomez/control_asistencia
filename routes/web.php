@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 //agregamos los siguientes controladores
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RolController;
+use App\Http\Controllers\AsistenciaController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\BlogController;
 /*
@@ -27,8 +28,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Rutas para importar asistencias desde un archivo Excel
+Route::get('asistencias/importar', [AsistenciaController::class, 'importForm'])->name('asistencias.import.form');
+Route::post('asistencias/importar', [AsistenciaController::class, 'import'])->name('asistencias.import');
 
-//y creamos un grupo de rutas protegidas para los controladores
+
+// Grupo de rutas protegidas para los controladores
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);

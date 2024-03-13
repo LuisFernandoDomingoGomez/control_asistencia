@@ -26,7 +26,7 @@ class CreateAsistenciasTable extends Migration
             $table->integer('salida_temprano_minutos')->nullable();
             $table->integer('tiempo_extra_normal')->nullable();
             $table->integer('tiempo_extra_especial')->nullable();
-            $table->integer('asistencias')->nullable();
+            $table->string('asistencias')->nullable();
             $table->integer('v')->nullable();
             $table->integer('f')->nullable();
             $table->integer('p')->nullable();
