@@ -120,7 +120,7 @@ public function import(Request $request)
         $asistencia = Asistencia::create($request->all());
 
         return redirect()->route('asistencias.index')
-            ->with('success', 'Asistencia created successfully.');
+            ->with('success', 'Asistencia creada con exitó.');
     }
 
     public function show($id)
@@ -144,7 +144,7 @@ public function import(Request $request)
         $asistencia->update($request->all());
 
         return redirect()->route('asistencias.index')
-            ->with('success', 'Asistencia updated successfully');
+            ->with('success', 'Asistencia editada con exitó.');
     }
 
     public function destroy($id)
@@ -152,6 +152,6 @@ public function import(Request $request)
         $asistencia = Asistencia::find($id)->delete();
 
         return redirect()->route('asistencias.index')
-            ->with('success', 'Asistencia deleted successfully');
+            ->with('success', 'Asistencia eliminada con exitó.');
     }
 }
