@@ -32,6 +32,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('asistencias/importar', [AsistenciaController::class, 'importForm'])->name('asistencias.import.form');
 Route::post('asistencias/importar', [AsistenciaController::class, 'import'])->name('asistencias.import');
 
+Route::get('asistencia.export', 'App\Http\Controllers\AsistenciaController@export')->name('asistencia.export');
+Route::get('concentrado.export', 'App\Http\Controllers\AsistenciaController@export2')->name('concentrado.export');
+
+Route::get('/asistencias/clear', [AsistenciaController::class, 'clear'])->name('asistencias.clear');
+
+
 
 // Grupo de rutas protegidas para los controladores
 Route::group(['middleware' => ['auth']], function() {

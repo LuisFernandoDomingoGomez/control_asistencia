@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Crear Informe</h3>
+            <h3 class="page__heading">Crear Reporte</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -26,8 +26,8 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                         <div class="form-group">
-                                        <label for="name">Nombre</label>
-                                        <input type="text" name="name" class="form-control">
+                                            <label for="name">Nombre</label>
+                                            <input type="text" name="name" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -37,6 +37,7 @@
                                                 <span>Arrastra y suelta tu archivo aquí o haz clic para seleccionar</span>
                                             </div>
                                         </label>
+                                        <!-- Cambiar el nombre del input file a 'archivo' -->
                                         <input type="file" name="archivo" id="fileInput" accept=".xlsx, .xls" style="display: none;">
                                     </div>
                                 </div>

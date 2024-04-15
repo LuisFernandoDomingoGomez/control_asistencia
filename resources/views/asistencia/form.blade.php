@@ -73,15 +73,15 @@
             </div>
             <div class="col-md-3">
                 <div class="mb-4">
-                    {{ Form::label('tiempo_extra_normal') }}
-                    {{ Form::text('tiempo_extra_normal', $asistencia->tiempo_extra_normal, ['class' => 'form-control' . ($errors->has('tiempo_extra_normal') ? ' is-invalid' : ''), 'placeholder' => 'Tiempo Extra Normal']) }}
+                    {{ Form::label('retardo_mayor') }}
+                    {{ Form::text('tiempo_extra_normal', $asistencia->tiempo_extra_normal, ['class' => 'form-control' . ($errors->has('tiempo_extra_normal') ? ' is-invalid' : ''), 'placeholder' => 'Retardo Mayor']) }}
                     {!! $errors->first('tiempo_extra_normal', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="mb-4">
-                    {{ Form::label('tiempo_extra_especial') }}
-                    {{ Form::text('tiempo_extra_especial', $asistencia->tiempo_extra_especial, ['class' => 'form-control' . ($errors->has('tiempo_extra_especial') ? ' is-invalid' : ''), 'placeholder' => 'Tiempo Extra Especial']) }}
+                    {{ Form::label('retardo_menor') }}
+                    {{ Form::text('tiempo_extra_especial', $asistencia->tiempo_extra_especial, ['class' => 'form-control' . ($errors->has('tiempo_extra_especial') ? ' is-invalid' : ''), 'placeholder' => 'Retardo Menor']) }}
                     {!! $errors->first('tiempo_extra_especial', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
             </div>
@@ -142,19 +142,9 @@
             </div>
             <div class="col-md-6">
                 <div class="mb-4">
-                    {{ Form::label('observacion', 'Observación') }}
-                    {{ Form::select('observacion', [
-                        'DIAS ECONOMICOS' => 'DÍAS ECONÓMICOS',
-                        'FALTAS' => 'FALTAS',
-                        'DIA DE CUMPLEAÑOS' => 'DÍA DE CUMPLEAÑOS',
-                        'PERMANENCIA DE ISSEMYM' => 'PERMANENCIA DE ISSEMYM',
-                        'CONSULTA ISSEMYM' => 'CONSULTA ISSEMYM',
-                        'OFICIO DE AUTORIZACIÓN (DIRECCIÓN)' => 'OFICIO DE AUTORIZACIÓN (DIRECCIÓN)',
-                        'OMICIÓN DE CHECADA ENTRADA' => 'OMICIÓN DE CHECADA ENTRADA',
-                        'OMICIÓN DE CHECADA SALIDA' => 'OMICIÓN DE CHECADA SALIDA',
-                        'OFICIO DE COMISIÓN' => 'OFICIO DE COMISIÓN'
-                    ], $asistencia->observacion, ['class' => 'form-control' . ($errors->has('observacion') ? ' is-invalid' : ''), 'placeholder' => 'Seleccionar opción']) }}
-                    {!! $errors->first('observacion', '<div class="invalid-feedback">:message</div>') !!}
+                {{ Form::label('observacion') }}
+                {{ Form::text('observacion', $asistencia->observacion, ['class' => 'form-control' . ($errors->has('observacion') ? ' is-invalid' : ''), 'placeholder' => 'Observacion']) }}
+                {!! $errors->first('observacion', '<div class="invalid-feedback">:message</div>') !!}
                 </div>
             </div>
         </div>

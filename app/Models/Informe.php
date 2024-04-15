@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Informe extends Model
 {
-    use HasFactory;
-    protected $fillable = ['name', 'archivo'];
+    
+    static $rules = [
+        'name' => 'required',
+        'archivo' => 'required',
+    ];
+
+    protected $perPage = 20;
+    protected $fillable = ['name','archivo'];
 }

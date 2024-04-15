@@ -14,8 +14,5 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             SeederTablaPermisos::class,
         ]);
-
-        // Llamar al Factory para crear usuarios falsos
-        UserFactory::new()->count(50)->create();
     }
 }

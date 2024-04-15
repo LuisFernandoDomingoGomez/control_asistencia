@@ -10,99 +10,75 @@ class InformeController extends Controller
 {
     function __construct()
     {
-         $this->middleware('permission:ver-informe|crear-informe|editar-informe|borrar-informe')->only('index');
-         $this->middleware('permission:crear-informe', ['only' => ['create','store']]);
-         $this->middleware('permission:editar-informe', ['only' => ['edit','update']]);
-         $this->middleware('permission:borrar-informe', ['only' => ['destroy']]);
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {       
-         //Con paginación
-         $informes = Informe::paginate(5);
-         return view('informes.index',compact('informes'));
-         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $informes->links() !!}    
+         $this->middleware('permission:ver-reporte|crear-reporte|editar-reporte|borrar-reporte')->only('index');
+         $this->middleware('permission:crear-reporte', ['only' => ['create','store']]);
+         $this->middleware('permission:editar-reporte', ['only' => ['edit','update']]);
+         $this->middleware('permission:borrar-reporte', ['only' => ['destroy']]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        $informes = Informe::paginate(5);
+        return view('informes.index',compact('informes'));
+    }
+
     public function create()
     {
         return view('informes.crear');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        request()->validate([
+        $request->validate([
             'name' => 'required',
-            'archivo' => 'required',
-        ]);
+            'archivo' => 'required|mimes:xlsx|max:10240', // Solo acepta archivos xlsx de hasta 2048 KB (10MB)
+        ]);        
+
+        $informe = new Informe();
+        $informe->name = $request->input('name');
+
+        $archivo = $request->file('archivo');
+        $archivoNombre = $archivo->getClientOriginalName();
+        $archivo->storeAs('archivos_reportes', $archivoNombre, 'public'); // Guardar en la carpeta "archivos_reportes" en el disco público
+
+        // Guardar la archivo en la carpeta "archivos_reportes"
+        $archivo->move(public_path('archivos_reportes'), $archivoNombre);
+        $informe->archivo = 'archivos_reportes/' . $archivoNombre;
+
+        $informe->save();
     
-        Informe::create($request->all());
-    
-        return redirect()->route('informes.index');
+        return redirect()->route('informes.index')
+            ->with('success', 'Informe creado con exito.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Informe $informe)
     {
         return view('informes.editar',compact('informe'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Informe $informe)
+    public function update(Request $request, informe $informe)
     {
-        request()->validate([
+        $request->validate([
             'name' => 'required',
-            'archivo' => 'required',
+            'archivo' => 'required|mimes:xlsx|max:10240', // Solo acepta archivos xlsx de hasta 2048 KB (10MB)
         ]);
-    
-        $informe->update($request->all());
-    
-        return redirect()->route('informes.index');
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        $informe->update($request->all());
+
+        $archivo = $request->file('archivo');
+        $archivoNombre = $archivo->getClientOriginalName();
+        $archivo->storeAs('archivos_reportes', $archivoNombre, 'public'); // Guardar en la carpeta "archivos_reportes" en el disco público
+
+        // Guardar la archivo en la carpeta "archivos_reportes"
+        $archivo->move(public_path('archivos_reportes'), $archivoNombre);
+        $informe->archivo = 'archivos_reportes/' . $archivoNombre;
+
+        $informe->save();
+
+        return redirect()->route('informes.index')
+            ->with('success', 'informe actualizado');
+    }    
+
     public function destroy(Informe $informe)
     {
         $informe->delete();

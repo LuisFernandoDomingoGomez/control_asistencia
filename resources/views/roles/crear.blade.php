@@ -33,21 +33,39 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
-                                    <label for="">Permisos para este Rol:</label>
-                                    <br/>
+                            <div class="form-group">
+                                <label for="">Permisos para este Rol:</label>
+                                <br/>
+                                <button type="button" id="checkAllBtn" class="btn btn-success">Marcar Todo</button>
+                                <br/><br/>
+                                <div class="permissions-container">
                                     @foreach($permission as $value)
-                                    <div class="w-1/2 px-2">
-                                        <label class="flex items-center">
-                                            {{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-                                            <span class="ml-2">{{ $value->name }}</span>
-                                        </label>
-                                    </div>
+                                        <label>{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
+                                        {{ $value->name }}</label>
                                     @endforeach
+                                    <style>
+                                        .permissions-container {
+                                            display: flex;
+                                            flex-wrap: wrap;
+                                        }
+                                        .permissions-container label {
+                                            width: 50%;
+                                            box-sizing: border-box;
+                                        }
+                                    </style>
+                                    <script>
+                                        document.getElementById('checkAllBtn').addEventListener('click', function() {
+                                            var checkboxes = document.querySelectorAll('.permissions-container input[type="checkbox"]');
+                                            checkboxes.forEach(function(checkbox) {
+                                                checkbox.checked = true;
+                                            });
+                                        });
+                                    </script>
                                 </div>
-                            </div>        
+                            </div>
+                        </div>      
                         </div>
-                        <button type="submit" class="btn btn-success">Guardar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                         {!! Form::close() !!}
                         </div>
                     </div>

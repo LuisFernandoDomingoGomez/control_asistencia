@@ -14,13 +14,15 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
+                        
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-success mr-2" href="{{ route('concentrado.export') }}"><i class="fas fa-file-excel"></i> Exportar Concentrado</a>
+                            <a class="btn btn-success mr-2" href="{{ route('asistencia.export') }}"><i class="fas fa-file-excel"></i> Exportar General</a>
+                            <a class="btn btn-primary mr-2" href="{{ route('asistencias.import') }}"><i class="fas fa-plus-circle"></i> Nuevo</a>
+                            <a class="btn btn-danger" href="{{ route('asistencias.clear') }}" onclick="return confirm('¿Estás seguro de que quieres eliminar todos los registros de asistencia?')"><i class="fas fa-trash-alt"></i> Limpiar</a>
+                        </div>
 
-                        @can('crear-asistencia')
-                            <div class="d-flex justify-content-end">
-                                <a class="btn btn-primary" href="{{ route('asistencias.import') }}">Nuevo</a>
-                            </div>
-                            <br>
-                        @endcan
+                        <br>
 
                         @if ($message = Session::get('success'))
                             <div class="alert alert-success">

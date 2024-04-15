@@ -14,7 +14,8 @@
                             <h4 class="page__heading">Detalles</h4>
                         </div>
                         <div class="d-flex justify-content-end">
-                            <a class="btn btn-primary" href="{{ route('asistencias.index') }}"> {{ __('Atrás') }}</a>
+                            <a class="btn btn-danger mr-2" href=""><i class="fas fa-file-pdf"></i> Exportar PDF</a>
+                            <a class="btn btn-primary  mr-2" href="{{ route('asistencias.index') }}"> {{ __('Atrás') }}</a>
                         </div>
                     </div>
 

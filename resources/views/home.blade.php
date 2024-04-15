@@ -48,8 +48,8 @@
                                                 use App\Models\Informe;
                                                 $cant_informes = Informe::count();                                                
                                                 @endphp
-                                                <h2 class="text-right"><i class="fa fa-blog f-left"></i><span>{{$cant_informes}}</span></h2>
-                                                <p class="m-b-0 text-right"><a href="/blogs" class="text-white">Ver más</a></p>
+                                                <h2 class="text-right"><i class="fas fa-file-alt f-left"></i><span>{{$cant_informes}}</span></h2>
+                                                <p class="m-b-0 text-right"><a href="/informes" class="text-white">Ver más</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -57,9 +57,13 @@
                                     <div class="col-md-3 col-xl-3">
                                         <div class="card bg-c-blue order-card">
                                             <div class="card-block">
-                                                <h5>Profesores</h5>
-                                                <h2 class="text-right"><i class="fa fa-blog f-left"></i><span>{{$cant_informes}}</span></h2>
-                                                <p class="m-b-0 text-right"><a href="/blogs" class="text-white">Ver más</a></p>
+                                                <h5>Inf. asistencias</h5>
+                                                @php
+                                                use App\Models\Asistencia;
+                                                $cant_asietencias = Asistencia::count();                                                
+                                                @endphp
+                                                <h2 class="text-right"><i class="fas fa-check-circle f-left"></i><span>{{$cant_asietencias}}</span></h2>
+                                                <p class="m-b-0 text-right"><a href="/asistencias" class="text-white">Ver más</a></p>
                                             </div>
                                         </div>
                                     </div>

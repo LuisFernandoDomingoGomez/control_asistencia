@@ -3,7 +3,7 @@
 @section('content')
     <section class="section">
         <div class="section-header">
-            <h3 class="page__heading">Informes</h3>
+            <h3 class="page__heading">Reportes</h3>
         </div>
         <div class="section-body">
             <div class="row">
@@ -31,11 +31,11 @@
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $informe->name }}</td>
-                                <td>{{ $informe->archivo }}</td>
+                                <td><a href="{{ asset($informe->archivo) }}" download>{{ $informe->archivo }}</a></td>
                                 <td>
                                     <form action="{{ route('informes.destroy',$informe->id) }}" method="POST">
                                         @can('editar-informe')
-                                        <a class="btn btn-info" href="{{ route('informes.edit',$informe->id) }}">Editar</a>
+                                        <a class="btn btn-success" href="{{ route('informes.edit',$informe->id) }}">Editar</a>
                                         @endcan
 
                                         @csrf
